@@ -4,10 +4,13 @@ pcb_notch_scale = 0.02485593;
 
 // Default screw length for the LED are 3 millimeters.
 led_screw_length = 3.0;
+bottom_screw_length = 3.0;
 
 // The height of the controller base in millimeters, not including the LED base and diffusor attachment.
 controller_height = 115;
-bottom_height_padding = 7;
+controller_radius = 15;
+bottom_height_padding = 0;
+bottom_torus_distance = 3;
 led_base_height = 10;
 led_board_diameter = 23;
 
@@ -15,7 +18,7 @@ circle_resolution_fn = 48;
 
 color([0, 0.5, 0.7])
 difference() {
-  $fn=256;
+  $fn=circle_resolution_fn;
 
   cylinder(h=controller_height, r=15);  // This is the main cylinder
   translate([0,0, -10]) cylinder(h=controller_height * 1.5, r=12.5); // The cylinder to be subtracted. The 'translate' function is used to ensure that this cylinder is centered properly.
@@ -29,8 +32,28 @@ difference() {
     pcb_slot_width,
     controller_height * 1.2,
    ]);
-   
+
+    // Screw Hole 1
+     translate([
+        controller_radius - 1.25,
+        0,
+        -2,
+    ])
+        cylinder(h=bottom_screw_length + 2, r=0.75);
+
+
+    // Screw Hole 2
+     mirror([1, 0, 0])
+     translate([
+        controller_radius - 1.25,
+        0,
+        -2,
+    ])
+        cylinder(h=bottom_screw_length + 2, r=0.75);
 }
+
+
+
 // LED Base
 color([0, 0.8, 0.9])
 difference() {
