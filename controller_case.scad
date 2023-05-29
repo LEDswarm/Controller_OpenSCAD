@@ -15,7 +15,7 @@ led_base_height = 10;
 // The diameter of the LED cylinder.
 led_base_diameter = 23;
 // The center of the o-ring can be translated inwards using this variable to adjust the pressure to a functional setting when the diffusor is attached.
-led_oring_deepness = 1.0;
+led_oring_deepness = 2.0;
 
 circle_resolution_fn = 128;
 
@@ -64,7 +64,7 @@ module ring(outer_diameter, inner_diameter, height) {
 }
 
 // LED Base
-color([0, 0.8, 0.9])
+color([0.9, 0.6, 0.6])
 difference() {
     $fn=circle_resolution_fn;
     translate([0, 0, controller_height])
@@ -72,7 +72,11 @@ difference() {
 
     // O-Ring Cutout (Torus)
     translate([0, 0, controller_height + led_base_height / 2 - 2])
-        ring(24, 24 - 1 - led_oring_deepness, 2.0);
+        ring(
+            24,
+            24 - 1 - led_oring_deepness,
+            2.5 + 0.2
+        );
 
     // Screw Hole 1
      translate([
