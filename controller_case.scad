@@ -7,6 +7,7 @@ led_screw_length = 3.0;
 
 // The height of the controller base in millimeters, not including the LED base and diffusor attachment.
 controller_height = 115;
+bottom_height_padding = 7;
 led_base_height = 10;
 led_board_diameter = 23;
 
@@ -37,13 +38,12 @@ difference() {
     translate([0, 0, controller_height])
         cylinder(h=led_base_height, r=led_board_diameter / 2);
 
+    // O-Ring Cutout (Torus)
     translate([0, 0, controller_height + led_base_height / 2 - 0.75])
         rotate_extrude(convexity = 10)
         translate([led_board_diameter / 2 - 0.2, 0, 0])
         scale([1, 1, 1])
         circle(1.5);
-
-
 
     // Screw Hole 1
      translate([
@@ -82,20 +82,19 @@ difference() {
 
 // PCB Notch Top-Right
 color([0, 0.5, 0.7])
-translate([pcb_slot_height / 2 - 0.037, 12.5, 0])
-linear_extrude(height = controller_height)
+translate([pcb_slot_height / 2 - 0.037, 12.5, bottom_height_padding])
+linear_extrude(height = controller_height - bottom_height_padding)
   // Prevent our little notch from appearing huge.
   // Height is about 1.616mm.
   scale(pcb_notch_scale)
   rotate([0, 0, -90])
   import("pcb_notch_2.svg");
 
-
 // PCB Notch Top-Left
 color([0, 0.5, 0.7])
 mirror([1, 0, 0])
-translate([pcb_slot_height / 2 - 0.037, 12.5, 0])
-linear_extrude(height = controller_height)
+translate([pcb_slot_height / 2 - 0.037, 12.5, bottom_height_padding])
+linear_extrude(height = controller_height - bottom_height_padding)
   scale(pcb_notch_scale)
   rotate([0, 0, -90])
   import("pcb_notch_2.svg");
@@ -103,8 +102,8 @@ linear_extrude(height = controller_height)
 mirror([0, 1, 0]) {
     // PCB Notch Top-Right
     color([0, 0.5, 0.7])
-    translate([pcb_slot_height / 2 - 0.037, 12.5, 0])
-    linear_extrude(height = controller_height)
+    translate([pcb_slot_height / 2 - 0.037, 12.5, bottom_height_padding])
+    linear_extrude(height = controller_height - bottom_height_padding)
       // Prevent our little notch from appearing huge.
       // Height is about 1.616mm.
       scale(pcb_notch_scale)
@@ -115,8 +114,8 @@ mirror([0, 1, 0]) {
     // PCB Notch Top-Left
     color([0, 0.5, 0.7])
     mirror([1, 0, 0])
-    translate([pcb_slot_height / 2 - 0.037, 12.5, 0])
-    linear_extrude(height = controller_height)
+    translate([pcb_slot_height / 2 - 0.037, 12.5, bottom_height_padding])
+    linear_extrude(height = controller_height - bottom_height_padding)
       scale(pcb_notch_scale)
       rotate([0, 0, -90])
       import("pcb_notch_2.svg");
