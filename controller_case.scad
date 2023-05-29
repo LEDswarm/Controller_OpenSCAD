@@ -56,7 +56,12 @@ difference() {
         cylinder(h=bottom_screw_length + 2, r=0.75);
 }
 
-
+module ring(outer_diameter, inner_diameter, height) {
+    difference() {
+        cylinder(h=height, r=outer_diameter/2, $fn=100);
+        cylinder(h=height, r=inner_diameter/2, $fn=100);
+    }
+}
 
 // LED Base
 color([0, 0.8, 0.9])
@@ -66,11 +71,8 @@ difference() {
         cylinder(h=led_base_height, r=led_base_diameter / 2);
 
     // O-Ring Cutout (Torus)
-    translate([0, 0, controller_height + led_base_height / 2 - 0.75])
-        rotate_extrude(convexity = 10)
-        translate([led_base_diameter / 2 - led_oring_deepness, 0, 0])
-        scale([1, 1, 1])
-        circle(1.5);
+    translate([0, 0, controller_height + led_base_height / 2 - 2])
+        ring(24, 21, 2.0);
 
     // Screw Hole 1
      translate([
