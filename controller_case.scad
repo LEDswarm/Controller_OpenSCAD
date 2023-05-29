@@ -12,6 +12,7 @@ led_board_diameter = 23;
 
 circle_resolution_fn = 48;
 
+color([0, 0.5, 0.7])
 difference() {
   $fn=256;
 
@@ -30,6 +31,7 @@ difference() {
    
 }
 // LED Base
+color([0, 0.8, 0.9])
 difference() {
     $fn=circle_resolution_fn;
     translate([0, 0, controller_height])
@@ -58,12 +60,18 @@ difference() {
         controller_height + led_base_height - led_screw_length,
     ])
         cylinder(h=led_base_height + 15, r=1);
+
+    // Inner Cutout
+    translate([0, 0, controller_height - 5])
+        cylinder(h=led_base_height + 10, r=(led_board_diameter / 2) - 4);
 }
 
 $fn=circle_resolution_fn;
 
+
 // LED Base Ring
 translate([0, 0, controller_height])
+color([0, 0.8, 0.9])
 difference() {
     $fn=circle_resolution_fn;
 
@@ -73,6 +81,7 @@ difference() {
 }
 
 // PCB Notch Top-Right
+color([0, 0.5, 0.7])
 translate([pcb_slot_height / 2 - 0.037, 12.5, 0])
 linear_extrude(height = controller_height)
   // Prevent our little notch from appearing huge.
@@ -83,6 +92,7 @@ linear_extrude(height = controller_height)
 
 
 // PCB Notch Top-Left
+color([0, 0.5, 0.7])
 mirror([1, 0, 0])
 translate([pcb_slot_height / 2 - 0.037, 12.5, 0])
 linear_extrude(height = controller_height)
@@ -92,6 +102,7 @@ linear_extrude(height = controller_height)
 
 mirror([0, 1, 0]) {
     // PCB Notch Top-Right
+    color([0, 0.5, 0.7])
     translate([pcb_slot_height / 2 - 0.037, 12.5, 0])
     linear_extrude(height = controller_height)
       // Prevent our little notch from appearing huge.
@@ -102,6 +113,7 @@ mirror([0, 1, 0]) {
 
 
     // PCB Notch Top-Left
+    color([0, 0.5, 0.7])
     mirror([1, 0, 0])
     translate([pcb_slot_height / 2 - 0.037, 12.5, 0])
     linear_extrude(height = controller_height)
