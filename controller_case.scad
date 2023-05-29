@@ -13,6 +13,8 @@ bottom_height_padding = 0;
 bottom_torus_distance = 3;
 led_base_height = 10;
 led_board_diameter = 23;
+// The center of the o-ring can be translated inwards using this variable to adjust the pressure to a functional setting when the diffusor is attached.
+led_oring_deepness = 0.2;
 
 circle_resolution_fn = 48;
 
@@ -34,6 +36,7 @@ difference() {
    ]);
 
     // Screw Hole 1
+    // The extra of two units here, undone again by the cylinder height, is a safety margin to ensure that the difference() works as intended
      translate([
         controller_radius - 1.25,
         0,
@@ -64,7 +67,7 @@ difference() {
     // O-Ring Cutout (Torus)
     translate([0, 0, controller_height + led_base_height / 2 - 0.75])
         rotate_extrude(convexity = 10)
-        translate([led_board_diameter / 2 - 0.2, 0, 0])
+        translate([led_board_diameter / 2 - led_oring_deepness, 0, 0])
         scale([1, 1, 1])
         circle(1.5);
 
