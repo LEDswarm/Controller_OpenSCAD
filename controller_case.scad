@@ -2,6 +2,9 @@ pcb_slot_height = 1.8;
 pcb_slot_width = 27;
 pcb_notch_scale = 0.02485593;
 
+// Default screw length for the LED are 3 millimeters.
+led_screw_length = 3.0;
+
 // The height of the controller base in millimeters, not including the LED base and diffusor attachment.
 controller_height = 115;
 led_base_height = 10;
@@ -38,13 +41,23 @@ difference() {
         scale([1, 1, 1])
         circle(1.5);
 
+
+
     // Screw Hole 1
-     translate([0, led_board_diameter / 2 - 2, controller_height + led_base_height / 2 - 0.75])
-    cylinder(h=led_base_height + 15, r=1);
+     translate([
+        0,
+        ((led_board_diameter / 2) - 2),
+        controller_height + led_base_height - led_screw_length,
+    ])
+        cylinder(h=led_base_height + 15, r=1);
 
     // Screw Hole 2
-     translate([0, ((led_board_diameter / 2) - 2) * -1, (controller_height + led_base_height / 2 - 0.75)])
-    cylinder(h=led_base_height + 15, r=1);
+     translate([
+        0,
+        ((led_board_diameter / 2) - 2) * -1,
+        controller_height + led_base_height - led_screw_length,
+    ])
+        cylinder(h=led_base_height + 15, r=1);
 }
 
 $fn=circle_resolution_fn;
