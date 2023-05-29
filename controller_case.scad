@@ -37,6 +37,14 @@ difference() {
         translate([led_board_diameter / 2 - 0.2, 0, 0])
         scale([1, 1, 1])
         circle(1.5);
+
+    // Screw Hole 1
+     translate([0, led_board_diameter / 2 - 2, controller_height + led_base_height / 2 - 0.75])
+    cylinder(h=led_base_height + 15, r=1);
+
+    // Screw Hole 2
+     translate([0, ((led_board_diameter / 2) - 2) * -1, (controller_height + led_base_height / 2 - 0.75)])
+    cylinder(h=led_base_height + 15, r=1);
 }
 
 $fn=circle_resolution_fn;
