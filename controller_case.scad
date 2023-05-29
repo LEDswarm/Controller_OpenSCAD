@@ -1,5 +1,6 @@
 pcb_slot_height = 1.8;
 pcb_slot_width = 27;
+pcb_notch_scale = 0.02485593;
 
 difference() {
   $fn=256;
@@ -10,7 +11,8 @@ difference() {
     pcb_slot_height / 2 * (-1),
     pcb_slot_width / 2 * (-1),
     0,
-   ]) cube([
+   ])
+   cube([
     pcb_slot_height,
     pcb_slot_width,
     120,
@@ -19,39 +21,39 @@ difference() {
 }
 
 // PCB Notch Top-Right
-translate([pcb_slot_height / 2 - 0.027, 12.5, 0])
+translate([pcb_slot_height / 2 - 0.037, 12.5, 0])
 linear_extrude(height = 115)
   // Prevent our little notch from appearing huge.
   // Height is about 1.616mm.
-  scale(0.02485593)
+  scale(pcb_notch_scale)
   rotate([0, 0, -90])
-  import("pcb_notch_shape.svg");
+  import("pcb_notch_2.svg");
 
 
 // PCB Notch Top-Left
 mirror([1, 0, 0])
-translate([pcb_slot_height / 2 - 0.027, 12.5, 0])
+translate([pcb_slot_height / 2 - 0.037, 12.5, 0])
 linear_extrude(height = 115)
-  scale(0.02485593)
+  scale(pcb_notch_scale)
   rotate([0, 0, -90])
-  import("pcb_notch_shape.svg");
+  import("pcb_notch_2.svg");
 
 mirror([0, 1, 0]) {
     // PCB Notch Top-Right
-    translate([pcb_slot_height / 2 - 0.027, 12.5, 0])
+    translate([pcb_slot_height / 2 - 0.037, 12.5, 0])
     linear_extrude(height = 115)
       // Prevent our little notch from appearing huge.
       // Height is about 1.616mm.
-      scale(0.02485593)
+      scale(pcb_notch_scale)
       rotate([0, 0, -90])
-      import("pcb_notch_shape.svg");
+      import("pcb_notch_2.svg");
 
 
     // PCB Notch Top-Left
     mirror([1, 0, 0])
-    translate([pcb_slot_height / 2 - 0.027, 12.5, 0])
+    translate([pcb_slot_height / 2 - 0.037, 12.5, 0])
     linear_extrude(height = 115)
-      scale(0.02485593)
+      scale(pcb_notch_scale)
       rotate([0, 0, -90])
-      import("pcb_notch_shape.svg");
+      import("pcb_notch_2.svg");
 }
