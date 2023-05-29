@@ -2,8 +2,12 @@ pcb_slot_height = 1.8;
 pcb_slot_width = 27;
 pcb_notch_scale = 0.02485593;
 
-// The height of the controller without the diffusor attached.
-controller_height = 130;
+// The height of the controller base in millimeters, not including the LED base and diffusor attachment.
+controller_height = 115;
+led_base_height = 10;
+led_board_diameter = 23;
+
+circle_resolution_fn = 48;
 
 difference() {
   $fn=256;
@@ -21,6 +25,30 @@ difference() {
     controller_height * 1.2,
    ]);
    
+}
+// LED Base
+difference() {
+    $fn=circle_resolution_fn;
+    translate([0, 0, controller_height])
+        cylinder(h=led_base_height, r=led_board_diameter / 2);
+
+    translate([0, 0, controller_height + led_base_height / 2 - 0.75])
+        rotate_extrude(convexity = 10)
+        translate([led_board_diameter / 2 - 0.2, 0, 0])
+        scale([1, 1, 1])
+        circle(1.5);
+}
+
+$fn=circle_resolution_fn;
+
+// LED Base Ring
+translate([0, 0, controller_height])
+difference() {
+    $fn=circle_resolution_fn;
+
+    cylinder(h=1, r=15);
+    translate([0, 0, -1])
+    cylinder(h=led_base_height + 2, r=led_board_diameter / 2);
 }
 
 // PCB Notch Top-Right
