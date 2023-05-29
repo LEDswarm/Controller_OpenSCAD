@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 21 59" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;">
+    <g transform="matrix(1,0,0,1,-441.433,-863.547)">
+        <path id="PCB-Notch" serif:id="PCB Notch" d="M450.12,864.606C450.185,870.856 453.213,879.379 457.5,889C461.158,897.209 461.964,905.685 461.87,911.574C461.749,919.108 458.445,920.073 453,920.784C450.805,921.071 444.423,921.045 443.136,921.048C442.121,921.051 442.119,920.897 442.111,920.304C442.018,913.629 441.833,873.667 442,867C442.019,866.255 442.02,864.136 442.206,864.137C442.623,864.138 450.111,863.742 450.12,864.606Z" style="fill:none;stroke:rgb(255,79,128);stroke-opacity:0.69;stroke-width:1px;"/>
+    </g>
+</svg>
